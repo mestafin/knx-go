@@ -137,6 +137,48 @@ func (d DPT_1010) String() string {
 	}
 }
 
+
+
+
+// vvvvvvvvvv mestafin vvvvvvvvvv
+
+// DPT_3007 represents DPT 3.007 / Dimming Control
+
+// 0 0000: Decrease, Break
+// 1 0001: Decrease, 100%
+// 8 1000: Increase, Break
+// 9 1001: Increase, 100%
+
+type DPT_3007 byte
+
+func (d DPT_3007) Pack() []byte {
+	return packByte1(byte(d))
+}
+
+func (d *DPT_3007) Unpack(data []byte) error {
+	return unpackByte1(data, (*byte)(d))
+}
+
+func (d DPT_3007) Unit() string {
+	return ""
+}
+
+func (d DPT_3007) String() string {
+
+	if (d & 07) == 0 {
+		return "Break"
+	} else if (d & 010) == 8 {
+		return "Increase"
+	} else {
+		return "Decrease"
+	}
+}
+
+
+// ^^^^^^^^^^ mestafin ^^^^^^^^^^
+
+
+
 // DPT_5001 represents DPT 5.001 / Scaling.
 type DPT_5001 float32
 

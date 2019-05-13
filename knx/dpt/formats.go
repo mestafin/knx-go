@@ -28,6 +28,26 @@ func unpackB1(data []byte, b *bool) error {
 	return nil
 }
 
+
+// vvvvvvvvvv mestafin vvvvvvvvvv
+
+func packByte1(b byte) []byte {
+	buffer := []byte{b}
+	return buffer
+}
+
+func unpackByte1(data []byte, b *byte) error {
+	if len(data) != 1 {
+		return ErrInvalidLength
+	}
+
+	*b = data[0]
+
+	return nil
+}
+
+// ^^^^^^^^^^ mestafin ^^^^^^^^^^
+
 func packF16(f float32) []byte {
 	buffer := []byte{0, 0, 0}
 
